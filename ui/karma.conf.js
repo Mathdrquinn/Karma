@@ -10,37 +10,6 @@ module.exports = function(config) {
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
         frameworks: ['jasmine'],
-        // list of files / patterns to load in the browser
-        // files: [
-        //     './app/bundle.js',
-        //     './node_modules/angular/angular.js',
-        //     './node_modules/angular-mocks/angular-mocks.js',
-        //     './app/**/*.spec.js'
-        // ],
-        files: ['webpack.karma.context.js'],
-        // list of files to exclude
-        exclude: [],
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        // preprocessors: {
-        //     './app/bundle.js': ['webpack'],
-        //     './app/**/*.spec.js': ['babel', 'commonjs']
-        // },
-        preprocessors: { 'webpack.karma.context.js': ['webpack'] },
-        webpack: webpackConfig,
-        webpackMiddleware: {
-            noInfo: true,
-        },
-        babelPreprocessor: {
-            options: {
-                presets: ['es2015'],
-                sourceMap: 'inline'
-            },
-        },
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress'],
         // web server port
         port: 9876,
         // enable / disable colors in the output (reporters and logs)
@@ -59,6 +28,38 @@ module.exports = function(config) {
         autoWatchBatchDelay: 300,
         // Concurrency level
         // how many browser should be started simultaneous
-        concurrency: Infinity
+        concurrency: Infinity,
+        // list of files / patterns to load in the browser
+        files: ['webpack.karma.context.js'],
+        // list of files to exclude
+        exclude: [],
+        // preprocess matching files before serving them to the browser
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+        // preprocessors: {
+        //     './app/bundle.js': ['webpack'],
+        //     './app/**/*.spec.js': ['babel', 'commonjs']
+        // },
+        preprocessors: {
+            'webpack.karma.context.js': ['webpack'],
+            './app/**/*!(.spec).js': ['coverage']
+        },
+        webpack: webpackConfig,
+        webpackMiddleware: {
+            noInfo: true,
+        },
+        babelPreprocessor: {
+            options: {
+                presets: ['es2015'],
+                sourceMap: 'inline'
+            },
+        },
+        // test results reporter to use
+        // possible values: 'dots', 'progress'
+        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+        reporters: ['progress', 'coverage'],
+        coverageReporter: {
+            type : 'text',
+            dir : 'coverage/',
+        }
     })
 }

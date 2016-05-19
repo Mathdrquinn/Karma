@@ -19,13 +19,17 @@ module.exports = {
         hash: true
     },
     module: {
+        preloaders: [],
         loaders: [
             {test: /\.html$/, loaders: ["raw"]},
             {test: /\.css$/, loaders: ["style", "css"]},
             {test: /\.scss$/, loaders: ["style", "css", "sass"]},
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
+                exclude: [
+                    /(node_modules|bower_components)/,
+                    /\.spec\.js$/
+                ],
                 loader: 'ng-annotate!babel?presets[]=es2015',
             },
             {

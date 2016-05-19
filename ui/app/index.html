@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en" ng-app="Karma" ng-controller="appCtrl as App">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ App.name }}</title>
+</head>
+<body>
+<a ui-sref="subMod">Go To subMod</a>
+<h1>{{ App.name }}</h1>
+<p>{{ App.description }}</p>
+<div ui-view="main"></div>
+<script src="bundle.js"></script>
+</body>
+</html>

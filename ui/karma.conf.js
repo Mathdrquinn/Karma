@@ -41,7 +41,6 @@ module.exports = function(config) {
         // },
         preprocessors: {
             'webpack.karma.context.js': ['webpack'],
-            './app/**/*!(.spec).js': ['coverage']
         },
         webpack: webpackConfig,
         webpackMiddleware: {
@@ -56,10 +55,10 @@ module.exports = function(config) {
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['progress', 'coverage'],
-        coverageReporter: {
-            type : 'text',
-            dir : 'coverage/',
-        }
+        // reporters: ['progress', 'coverage'],
+        // coverageReporter: {
+        //     type : 'text',
+        //     dir : 'coverage/',
+        // }
     })
 }
